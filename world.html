@@ -56,8 +56,7 @@
       <h3>Influence Rating</h3>
       <div><i class="fas fa-star"></i> Emerging</div>
       <div><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> Established</div>
-      <div><i class="fas fa-star"></i><i class="fas fa-star"></i>
-           <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> Legendary</div>
+      <div><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> Legendary</div>
     </div>
 
     <h2>Composer Profiles</h2>
@@ -74,11 +73,7 @@
       </div>
       <div class="rating">
         <strong>Influence:</strong>
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-        <i class="far fa-star"></i>
+        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
       </div>
     </section>
 
@@ -94,8 +89,7 @@
       </div>
       <div class="rating">
         <strong>Influence:</strong>
-        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
       </div>
     </section>
 
@@ -111,9 +105,7 @@
       </div>
       <div class="rating">
         <strong>Influence:</strong>
-        <i class="fas fa-star"></i><i class="fas fa-star"></i>
-        <i class="fas fa-star"></i><i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
       </div>
     </section>
 
@@ -129,8 +121,7 @@
       </div>
       <div class="rating">
         <strong>Influence:</strong>
-        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-        <i class="far fa-star"></i><i class="far fa-star"></i>
+        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
       </div>
     </section>
 
@@ -146,8 +137,7 @@
       </div>
       <div class="rating">
         <strong>Influence:</strong>
-        <i class="fas fa-star"></i><i class="fas fa-star"></i>
-        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
       </div>
     </section>
 
@@ -163,8 +153,7 @@
       </div>
       <div class="rating">
         <strong>Influence:</strong>
-        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-        <i class="far fa-star"></i><i class="far fa-star"></i>
+        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
       </div>
     </section>
 
@@ -180,8 +169,7 @@
       </div>
       <div class="rating">
         <strong>Influence:</strong>
-        <i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
-        <i class="far fa-star"></i><i class="far fa-star"></i>
+        <i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
       </div>
     </section>
 
@@ -197,8 +185,7 @@
       </div>
       <div class="rating">
         <strong>Influence:</strong>
-        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
       </div>
     </section>
 
@@ -214,8 +201,7 @@
       </div>
       <div class="rating">
         <strong>Influence:</strong>
-        <i class="fas fa-star"></i><i class="fas fa-star"></i>
-        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
       </div>
     </section>
 
@@ -225,54 +211,45 @@
     <p>&copy; 2025 by Garlic Design. All rights reserved.</p>
   </footer>
 
-    <!-- Leaflet & Marker Logic -->
-    <script>
-      const map = L.map('map').setView([20, 0], 2);
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 18, attribution: '&copy; OpenStreetMap contributors'
-      }).addTo(map);
-  
-      const jpIcon = L.divIcon({
-        className: 'custom-icon',
-        html: '<i class="fas fa-music" style="color:#ffcb05;font-size:24px;"></i>'
-      });
-      const intlIcon = L.divIcon({
-        className: 'custom-icon',
-        html: '<i class="fas fa-headphones" style="color:#00d1b2;font-size:24px;"></i>'
-      });
-  
-      // now with a 'rating' field (1–5)
-      const composers = [
-        { alias:'Toby Fox',          coords:[42.3601,-71.0589],    cat:'intl', anchor:'profile-toby-fox',         sig:'Megalovania',          rating: 5 },
-        { alias:'Shoji Meguro',      coords:[35.6895,139.6917],    cat:'jp',   anchor:'profile-shoji-meguro',     sig:'Life Will Change',     rating: 4 },
-        { alias:'Nobuo Uematsu',     coords:[33.5590,133.5310],    cat:'jp',   anchor:'profile-nobuo-uematsu',    sig:'One-Winged Angel',     rating: 5 },
-        { alias:'Junichi Masuda',    coords:[35.6895,139.6917],    cat:'jp',   anchor:'profile-junichi-masuda',   sig:'Route 1 Theme',        rating: 3 },
-        { alias:'Yasunori Mitsuda',  coords:[34.0570,131.8350],    cat:'jp',   anchor:'profile-yasunori-mitsuda', sig:'Corridors of Time',     rating: 5 },
-        { alias:'C418',              coords:[52.5200,13.4050],     cat:'intl', anchor:'profile-c418',             sig:'Sweden',               rating: 4 },
-        { alias:'Christopher Larkin',coords:[-33.8688,151.2093],   cat:'intl', anchor:'profile-christopher-larkin',sig:'Greenpath',            rating: 3 },
-        { alias:'Motoi Sakuraba',    coords:[34.6937,135.5023],    cat:'jp',   anchor:'profile-motoi-sakuraba',    sig:'Beyond the Sky',       rating: 4 },
-        { alias:'Jeremy Soule',      coords:[47.6062,-122.3321],    cat:'intl', anchor:'profile-jeremy-soule',       sig:'Dragonborn',           rating: 5 }
-      ];
-  
-      composers.forEach(c => {
-        const icon = c.cat === 'jp' ? jpIcon : intlIcon;
-        const marker = L.marker(c.coords, { icon }).addTo(map);
-  
-        // build a star string
-        const stars = '★'.repeat(c.rating) + '☆'.repeat(5 - c.rating);
-  
-        marker.bindPopup(`
-          <strong>${c.alias}</strong><br>
-          <em>${c.sig}</em><br>
-          <strong>Iconic Rating:</strong> ${stars}<br>
-          <a href="#${c.anchor}">View Profile</a>
-        `);
-  
-        marker.on('popupopen', () => {
-          location.hash = `#${c.anchor}`;
-        });
-      });
-    </script>
-  
+  <!-- Leaflet & Marker Logic -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+    const map = L.map('map').setView([20, 0], 2);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 18, attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    const jpIcon = L.divIcon({
+      className: 'custom-icon',
+      html: '<i class="fas fa-music" style="color:#ffcb05;font-size:24px;"></i>'
+    });
+    const intlIcon = L.divIcon({
+      className: 'custom-icon',
+      html: '<i class="fas fa-headphones" style="color:#00d1b2;font-size:24px;"></i>'
+    });
+
+    const composers = [
+      { alias:'Toby Fox', coords:[42.3601, -71.0589],    cat:'intl', anchor:'profile-toby-fox',        sig:'Megalovania' },
+      { alias:'Shoji Meguro', coords:[35.6895, 139.6917], cat:'jp',   anchor:'profile-shoji-meguro',    sig:'Life Will Change' },
+      { alias:'Nobuo Uematsu', coords:[33.5590, 133.5310],cat:'jp',   anchor:'profile-nobuo-uematsu',   sig:'One-Winged Angel' },
+      { alias:'Junichi Masuda', coords:[35.6895, 139.6917],cat:'jp',   anchor:'profile-junichi-masuda',  sig:'Route 1 Theme' },
+      { alias:'Yasunori Mitsuda',coords:[34.0570, 131.8350],cat:'jp',  anchor:'profile-yasunori-mitsuda',sig:'Corridors of Time' },
+      { alias:'C418', coords:[52.5200, 13.4050],           cat:'intl', anchor:'profile-c418',            sig:'Sweden' },
+      { alias:'Christopher Larkin',coords:[-33.8688,151.2093],cat:'intl',anchor:'profile-christopher-larkin',sig:'Greenpath' },
+      { alias:'Motoi Sakuraba', coords:[34.6937, 135.5023],cat:'jp',   anchor:'profile-motoi-sakuraba',  sig:'Beyond the Sky' },
+      { alias:'Jeremy Soule', coords:[47.6062, -122.3321],  cat:'intl', anchor:'profile-jeremy-soule',    sig:'Dragonborn' }
+    ];
+
+    composers.forEach(c => {
+      const icon = c.cat==='jp' ? jpIcon : intlIcon;
+      const marker = L.marker(c.coords, { icon }).addTo(map);
+      marker.bindPopup(`
+        <strong>${c.alias}</strong><br>
+        <em>${c.sig}</em><br>
+        <a href="#${c.anchor}">View Profile</a>
+      `);
+      marker.on('popupopen', ()=> location.hash = `#${c.anchor}`);
+    });
+  </script>
 </body>
 </html>
