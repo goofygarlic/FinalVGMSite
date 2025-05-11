@@ -1,78 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Sounds - In-Game Music Clips</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet"/>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> <!-- JQUERY -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script> <!-- POPPER.JS -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script> <!-- BOOTSTRAP 4-->
-  <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>  
-  <link rel="stylesheet" href="css/sounds.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jukebox</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/sounds.css" />
 </head>
 <body>
-  <header>
-    <div class="site-nav">
-      <img src="images/web-logo.svg" alt="Site Logo" class="site-logo">
-      <nav>
+  <!-- ===== Site Navigation ===== -->
+  <header class="site-nav">
+    <img src="images/web-logo.svg" alt="Site Logo" class="site-logo" />
+    <nav>
         <a href="home.html">Home</a>
         <a href="reviews.html">Reviews</a>
         <a href="gallery.html">Gallery</a>
-        <a href="sounds.html">Soundtracks</a>
+        <a href="sounds.html" class="active">Jukebox</a>
         <a href="world.html">Composers</a>
         <a href="visual.html">Essay</a>
         <a href="about.html">About</a>
-      </nav>
-    </div>
+        </nav>
   </header>
 
+  <!-- ===== Main Jukebox ===== -->
   <main>
-    <h1>In-Game Music Audio Clips</h1>
-    <p>Here you can listen to some of our favorite soundtracks.</p>
-    
-    <section class="sounds-group">
-      <h2>Battle Themes</h2>
-      <p>Click play below to hear a sample of each track.</p>
-      <div class="audio-item">
-         <h3>Persona 3 Reload - Episode Aigis: Don't</h3>
-         <audio controls>
-            <source src="audio/one-winged-angel.mp3" type="audio/mpeg">
-            Your browser does not support the audio element.
-         </audio>
+    <h1>Boss Rush Jukebox</h1>
+    <p>Hit <strong>Play ⇢</strong> and let random 30‑second boss‑theme highlights ambush your ears. Skip anytime!</p>
+
+    <section id="jukebox" class="jukebox-card">
+      <div class="waveform"></div>
+      <h2 id="bossName">Ready?</h2>
+      <div class="controls">
+        <button id="playBtn" aria-label="Play"><span class="icon">▶</span></button>
+        <button id="skipBtn" aria-label="Skip"><span class="icon">⤼</span></button>
       </div>
-      <div class="audio-item">
-         <h3>Pokemon Black 2 / White 2: Gym Leader Battle Theme</h3>
-         <audio controls>
-            <source src="audio/chrono-battle.mp3" type="audio/mpeg">
-            Your browser does not support the audio element.
-         </audio>
-      </div>
-    </section>
-    
-    <section class="sounds-group">
-      <h2>Ambient Soundscapes</h2>
-      <p>Immerse yourself in atmospheric music that defines the feel of exploration and wonder. Listen to these ambient tracks that draw you deep into game worlds.</p>
-      <div class="audio-item">
-         <h3>Persona 4: Your Affection</h3>
-         <audio controls>
-            <source src="audio/journey-nascence.mp3" type="audio/mpeg">
-            Your browser does not support the audio element.
-         </audio>
-      </div>
-      <div class="audio-item">
-         <h3>Pokemon Heartgold / Soulsilver: Ecruteak City</h3>
-         <audio controls>
-            <source src="audio/shadow-opened-way.mp3" type="audio/mpeg">
-            Your browser does not support the audio element.
-         </audio>
-      </div>
+      <!-- hidden player -->
+      <audio id="audioPlayer"></audio>
     </section>
   </main>
 
   <footer>
-    <p>&copy; 2025 by Garlic Design. All rights reserved.</p>
+    <p>&copy; 2025 Garlic Design – All boss clips belong to their respective composers.</p>
   </footer>
+
+  <!-- ===== Boss Track List & Logic ===== -->
+  <script>
+    const tracks = [
+      { name: 'Calamitas – Stained, Brutal Calamity', file: 'audio/cal_calami.mp3' },
+      { name: 'Terraria – Eye of Cthulhu', file: 'audio/eye.mp3' },
+      { name: 'Hollow Knight – Hornet', file: 'audio/hornet.mp3' },
+      { name: 'Undertale – Megalovania', file: 'audio/megalovania.mp3' },
+      { name: 'Persona 5 – Rivers in the Desert', file: 'audio/rivers.mp3' }
+    ];
+
+    const audio = document.getElementById('audioPlayer');
+    const bossName = document.getElementById('bossName');
+    const playBtn = document.getElementById('playBtn');
+    const skipBtn = document.getElementById('skipBtn');
+    const wave = document.querySelector('.waveform');
+
+    let current = null;
+    let playing = false;
+
+    function pickTrack() {
+      current = tracks[Math.floor(Math.random() * tracks.length)];
+      bossName.textContent = current.name;
+      audio.src = current.file;
+    }
+
+    function togglePlay() {
+      if (!playing) {
+        if (!current) pickTrack();
+        audio.play();
+      } else {
+        audio.pause();
+      }
+    }
+
+    playBtn.addEventListener('click', togglePlay);
+    skipBtn.addEventListener('click', () => {
+      pickTrack();
+      if (playing) audio.play();
+    });
+
+    audio.addEventListener('play', () => {
+      playing = true;
+      playBtn.innerHTML = '<span class="icon">❚❚</span>';
+      wave.classList.add('animate');
+    });
+
+    audio.addEventListener('pause', () => {
+      playing = false;
+      playBtn.innerHTML = '<span class="icon">▶</span>';
+      wave.classList.remove('animate');
+    });
+
+    audio.addEventListener('ended', () => {
+      pickTrack();
+      audio.play();
+    });
+  </script>
 </body>
 </html>

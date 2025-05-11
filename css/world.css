@@ -16,8 +16,8 @@
   nav a { color:#fff; text-decoration:none; margin-left:1.5rem;
     font-weight:400; transition:color .3s,transform .3s;
   }
-  nav a:hover { color:#ffcb05; transform:translateY(-2px); }
-  
+nav a:hover{color:#ffcb05;transform:translateY(-2px)}
+nav .active{color:#ffcb05;font-weight:700}
   /* — Main & Headings — */
   main { max-width:900px; margin:0 auto; padding:2rem 1rem; text-align:center; }
   h1 { font-size:3rem; font-weight:700; margin-bottom:1rem;

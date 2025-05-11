@@ -35,10 +35,8 @@ nav a {
     transition: color 0.3s, transform 0.3s;
 }
 
-nav a:hover {
-    color: #ffcb05;
-    transform: translateY(-2px);
-}
+nav a:hover{color:#ffcb05;transform:translateY(-2px)}
+nav .active{color:#ffcb05;font-weight:700}
 
 /* Main Content */
 main {

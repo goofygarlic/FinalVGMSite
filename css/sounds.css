@@ -1,110 +1,61 @@
-/* Reset some default browser styles for consistency */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* ===== Boss Rush Jukebox styles ===== */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap');
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:'Montserrat',sans-serif;
+  background:linear-gradient(135deg,#1f1e2e 0%,#2f2e48 100%);
+  color:#fff;
+  line-height:1.6;
 }
 
-/* Body & Global */
-body {
-    font-family: 'Montserrat', sans-serif;
-    background: linear-gradient(135deg, #1f1e2e 0%, #2f2e48 100%);
-    color: #ffffff;
-    line-height: 1.5;
+/* --- nav --- */
+.site-nav{
+  display:flex;justify-content:space-between;align-items:center;
+  background:rgba(100,100,100,.7);padding:1rem 2rem;
 }
+.site-logo{width:80px;height:auto}
+nav a{color:#fff;text-decoration:none;margin-left:1.5rem;transition:color .3s,transform .3s}
+nav a:hover{color:#ffcb05;transform:translateY(-2px)}
+nav .active{color:#ffcb05;font-weight:700}
 
-/* Header Navigation */
-.site-nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem 2rem;
-    background-color: rgba(100, 100, 100, 0.7);
-}
+/* --- main --- */
+main{text-align:center;padding:3rem 1rem;max-width:900px;margin:0 auto}
+h1{font-size:3rem;font-weight:700;margin-bottom:.5rem;text-shadow:2px 2px 4px rgba(0,0,0,.6)}
+p{font-size:1.1rem;margin-bottom:2rem}
 
-.site-logo {
-    width: 80px;
-    height: auto;
-    cursor: pointer;
+/* --- Jukebox Card --- */
+.jukebox-card{
+  background:rgba(255,255,255,.05);
+  border-radius:12px;
+  padding:2.5rem 1.5rem;
+  display:flex;flex-direction:column;align-items:center;
+  gap:1.5rem;
+  box-shadow:0 4px 12px rgba(0,0,0,.5);
 }
+.jukebox-card h2{font-size:1.75rem;color:#ffcb05;text-shadow:1px 1px 3px rgba(0,0,0,.6)}
 
-nav a {
-    color: #ffffff;
-    text-decoration: none;
-    margin-left: 1.5rem;
-    font-weight: 400;
-    transition: color 0.3s, transform 0.3s;
+/* waveform placeholder */
+.waveform{
+  width:100%;max-width:500px;height:100px;
+  background:linear-gradient(90deg,transparent 0% 10%,#ffcb05 10% 15%,transparent 15% 25%,#ffcb05 25% 30%,transparent 30%);
+  background-size:60px 100%;background-repeat:repeat-x;
+  border-radius:6px;
+  opacity:.4;
+  transition:opacity .4s;
 }
+.waveform.animate{animation:wave 1s linear infinite;opacity:1}
+@keyframes wave{from{background-position:0}to{background-position:-60px}}
 
-nav a:hover {
-    color: #ffcb05;
-    transform: translateY(-2px);
-}
+/* controls */
+.controls{display:flex;gap:1rem}
+button{
+  background:#ffcb05;border:none;border-radius:50%;width:60px;height:60px;
+  font-size:1.5rem;font-weight:700;cursor:pointer;color:#1f1e2e;
+  box-shadow:0 2px 6px rgba(0,0,0,.4);transition:transform .2s}
+button:hover{transform:scale(1.05)}
+.icon{pointer-events:none}
 
-/* Main Content */
-main {
-    text-align: center;
-    padding: 2rem 1rem;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-h1 {
-    font-size: 3rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
-}
-
-h2 {
-    font-size: 2rem;
-    margin: 2rem 0 1rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
-}
-
-p {
-    font-size: 1.1rem;
-    margin: 1rem 0;
-}
-
-/* Sounds Group Specific */
-.sounds-group {
-    text-align: left;
-    max-width: 800px;
-    margin: 2rem auto;
-    padding: 1rem;
-    background-color: rgba(255,255,255,0.06);
-    border-radius: 8px;
-}
-
-.audio-item {
-    margin-bottom: 1.5rem;
-}
-
-.audio-item h3 {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-}
-
-audio {
-    width: 100%;
-    max-width: 600px;
-    display: block;
-    margin: 0 auto;
-}
-
-/* Footer */
-footer {
-    background-color: rgba(0, 0, 0, 0.7);
-    padding: 1rem;
-    text-align: center;
-    margin-top: 2rem;
-}
-
-footer p {
-    font-size: 0.9rem;
-    color: #ffffff;
-}
+/* footer */
+footer{background:rgba(0,0,0,.7);padding:1rem;text-align:center;margin-top:3rem}
+footer p{font-size:.9rem}
