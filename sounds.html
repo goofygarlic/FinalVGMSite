@@ -24,15 +24,15 @@
 
   <!-- ===== Main Jukebox ===== -->
   <main>
-    <h1>Boss Rush Jukebox</h1>
-    <p>Hit <strong>Play ⇢</strong> and let random 30‑second boss‑theme highlights ambush your ears. Skip anytime!</p>
+    <h1>Jukebox</h1>
+    <p>Hit <strong>Play ⇢</strong> and let random 30‑second highlights flood your ears. Skip anytime!</p>
 
     <section id="jukebox" class="jukebox-card">
       <div class="waveform"></div>
       <h2 id="bossName">Ready?</h2>
       <div class="controls">
-        <button id="playBtn" aria-label="Play"><span class="icon">▶</span></button>
-        <button id="skipBtn" aria-label="Skip"><span class="icon">⤼</span></button>
+        <button id="playBtn" aria-label="Play"><span class="icon">⏯</span></button>
+        <button id="skipBtn" aria-label="Skip"><span class="icon">⏭</span></button>
       </div>
       <!-- hidden player -->
       <audio id="audioPlayer"></audio>
@@ -43,14 +43,14 @@
     <p>&copy; 2025 Garlic Design – All boss clips belong to their respective composers.</p>
   </footer>
 
-  <!-- ===== Boss Track List & Logic ===== -->
+  <!-- =</style>==== Track List & Logic ===== -->
   <script>
     const tracks = [
-      { name: 'Calamitas – Stained, Brutal Calamity', file: 'audio/cal_calami.mp3' },
-      { name: 'Terraria – Eye of Cthulhu', file: 'audio/eye.mp3' },
-      { name: 'Hollow Knight – Hornet', file: 'audio/hornet.mp3' },
-      { name: 'Undertale – Megalovania', file: 'audio/megalovania.mp3' },
-      { name: 'Persona 5 – Rivers in the Desert', file: 'audio/rivers.mp3' }
+      { name: 'Bloons TD 5 – Main Theme', file: 'audio/main_theme_-_bloons_td_5.mp3' },
+      { name: 'Persona 4 – Signs of Love', file: 'audio/signs_of_love.mp3' },
+      { name: 'Persona 5 Royal – No More What Ifs', file: 'audio/no_more_what_ifs.mp3' },
+      { name: 'Persona 3 FES – P3 fes', file: 'audio/p3_fes.mp3' },
+      { name: 'Pokemon Black/White – Elite Four', file: 'audio/elite_four_battle_music.mp3' }
     ];
 
     const audio = document.getElementById('audioPlayer');
@@ -61,9 +61,16 @@
 
     let current = null;
     let playing = false;
+    let previousTrack = null;
 
     function pickTrack() {
-      current = tracks[Math.floor(Math.random() * tracks.length)];
+      let newTrack;
+      do {
+      newTrack = tracks[Math.floor(Math.random() * tracks.length)];
+      } while (newTrack === current && tracks.length > 1);
+      
+      previousTrack = current;
+      current = newTrack;
       bossName.textContent = current.name;
       audio.src = current.file;
     }
@@ -98,6 +105,22 @@
     audio.addEventListener('ended', () => {
       pickTrack();
       audio.play();
+    });
+
+    audio.addEventListener('play', () => {
+      if (current && current.name.includes('P3 fes')) {
+        const caption = document.createElement('p');
+        caption.className = 'special-caption';
+        caption.textContent = "This one will be full length. :D";
+        
+        const oldCaption = document.querySelector('.special-caption');
+        if (oldCaption) oldCaption.remove();
+        
+        document.querySelector('.jukebox-card').appendChild(caption);
+      } else {
+        const caption = document.querySelector('.special-caption');
+        if (caption) caption.remove();
+      }
     });
   </script>
 </body>
